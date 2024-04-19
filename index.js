@@ -53,6 +53,11 @@ clear.addEventListener("click", () => {
   step = 0;
   car.src = "";
   car.alt = "";
+  stepIndicators.forEach((step) => {
+    step.classList.remove("active");
+    step.classList.remove("completed");
+  });
+  stepIndicators[step].classList.add("active");
   clear.style.display = "none";
   showStep(step);
 });
