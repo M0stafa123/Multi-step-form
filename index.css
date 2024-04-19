@@ -1,0 +1,281 @@
+:root {
+  --main: #010447;
+  --text: #7683d4;
+  --secondry: #21ce8f;
+  --last: #fbfcff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--last);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+}
+
+body > form {
+  width: 600px;
+  margin: auto;
+  background-color: var(--main);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 550px;
+  font-family: monospace;
+  position: relative;
+}
+@media (max-width: 600px) {
+  body > form {
+    width: 300px;
+  }
+}
+form > section {
+  display: none;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+}
+form > section > div {
+  padding: 10px;
+}
+
+/* labels */
+form > section label {
+  display: block;
+  margin: 10px 0;
+  text-transform: capitalize;
+  color: var(--text);
+}
+label.required::before {
+  content: "* ";
+  color: #8c9aff;
+}
+/*  */
+
+/* select, inputs and textareas */
+form > section select,
+form > section input,
+textarea {
+  padding: 5px 10px;
+  width: 100%;
+  background-color: var(--last);
+  border: none;
+}
+form > section input[type="file"] {
+  padding: 0;
+  background-color: transparent;
+}
+/*  */
+
+/* next and back buttons */
+form .control {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form .control button {
+  background-color: var(--secondry);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+}
+button.next {
+  margin-left: auto;
+}
+/*  */
+
+/* phone input */
+.code img {
+  width: 20px;
+}
+.code {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  background-color: white;
+  color: black;
+}
+.code li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+}
+.code li:hover {
+  background-color: #eee;
+}
+.code-container {
+  min-width: 55px;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--last);
+  display: flex;
+  user-select: none;
+}
+.down {
+  font-size: 15px;
+  color: gray;
+  display: block;
+  transform-origin: center;
+  height: fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: -2px;
+  position: absolute;
+  left: 41px;
+  top: 50%;
+  transform: translatey(-50%);
+  transition: transform 0.3ms;
+}
+.flag {
+  width: 40px;
+  background-position: center;
+  background-size: cover;
+}
+.open-menu .down {
+  transform: translatey(-50%) rotate(180deg);
+}
+.open-menu {
+  overflow: visible;
+}
+/*  */
+
+/* delete order button */
+.delete {
+  color: white;
+  background-color: red;
+  padding: 10px 20px;
+  display: none;
+  cursor: pointer;
+  border: none;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+/*  */
+
+/* errors */
+.empty {
+  border: 1px solid red;
+}
+.err {
+  color: red;
+  text-align: center;
+  margin: 5px 0;
+}
+/*  */
+
+/* car image */
+.car {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+/*  */
+
+/* phone number */
+div.phone {
+  padding: 0;
+  display: flex;
+  gap: 4px;
+}
+.code {
+  width: 65px;
+}
+
+/*  */
+
+/* fifth step */
+.fifth-step p {
+  font-weight: bold;
+  color: var(--text);
+  text-transform: capitalize;
+}
+.fifth-step p span {
+  font-weight: normal;
+  color: white;
+  text-transform: none;
+}
+.fifth-step article {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  gap: 20px;
+}
+.fifth-step article div {
+  width: 250px;
+}
+
+/*  */
+
+/* sixth step */
+.sixth-step {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+.sixth-step h1 {
+  font-size: 28px;
+  margin: auto;
+  width: 400px;
+}
+.sixth-step p {
+  font-size: 23px;
+  color: var(--text);
+}
+.sixth-step span {
+  color: white;
+}
+@media (max-width: 600px) {
+  .sixth-step h1 {
+    width: 220px;
+    font-size: 20px;
+  }
+}
+.sixth-step p {
+  font-size: 17px;
+}
+
+/*  */
+
+/* indicator */
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 20px 0;
+}
+
+.indicator span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--last);
+  display: block;
+  opacity: 0.5;
+}
+/*  */
+
+/* active step*/
+.active {
+  opacity: 1 !important;
+}
+
+/*  */
+
+/* completed step */
+.completed {
+  background-color: var(--secondry) !important;
+}
+/*  */

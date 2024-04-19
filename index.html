@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi steps form</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <form>
+      <section class="first-step">
+        <div>
+          <label for="type" class="required">Form for :</label>
+          <select required name="type" id="type">
+            <option value="">..</option>
+            <option value="individual">Individual</option>
+            <option value="company">Company</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="manufacturer" class="required">car manufacturer :</label>
+          <select required name="manufacturer" id="manufacturer">
+            <option value="">..</option>
+
+            <option value="Acura">Acura</option>
+            <option value="Audi">Audi</option>
+            <option value="Bentley">Bentley</option>
+            <option value="BMW">BMW</option>
+            <option value="Bugatti">Bugatti</option>
+            <option value="Cadillac">Cadillac</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Dodge">Dodge</option>
+            <option value="FIAT">FIAT</option>
+            <option value="Ford">Ford</option>
+            <option value="GMC">GMC</option>
+            <option value="Honda">Honda</option>
+            <option value="Hyundai">Hyundai</option>
+            <option value="Jeep">Jeep</option>
+            <option value="Mazda">Mazda</option>
+            <option value="Volkswagen">Mazda</option>
+          </select>
+        </div>
+        <div>
+          <label for="model" class="required">model :</label>
+          <select required name="model" id="model">
+            <option value="">..</option>
+            <option value="X1">X1</option>
+            <option value="X3">X3</option>
+            <option value="X5">X5</option>
+            <option value="Mustang">Mustang</option>
+            <option value="Explorer">Explorer</option>
+            <option value="Escape">Escape</option>
+            <option value="Edge">Edge</option>
+            <option value="Golf">Golf</option>
+            <option value="Passat">Passat</option>
+            <option value="Jetta">Jetta</option>
+            <option value="Tiguan">Tiguan</option>
+            <option value="Polo">Polo</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Expedition">Expedition</option>
+            <option value="Bronco">Bronco</option>
+            <option value="EcoSport">EcoSport</option>
+            <option value="Transit">Transit</option>
+            <option value="Fusion1">Fusion1</option>
+          </select>
+        </div>
+        <div>
+          <label for="model-year" class="required">model year :</label>
+          <select required name="model-year" id="model-year">
+            <option value="">..</option>
+
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+          </select>
+        </div>
+
+        <img src="" alt="" class="car" />
+      </section>
+      <section class="second-step">
+        <label for="part-name" class="required">part name :</label>
+        <input required type="text" id="part-name" />
+        <label for="number-of-part" class="required">how many :</label>
+        <input type="number" id="number-of-part" required />
+        <label for="serial" class="required">serial number :</label>
+        <input type="text" id="serial" />
+        <label for="car-number" class="required">car number :</label>
+        <input type="text" id="car-number" />
+        <label for="part-desc">part description :</label>
+        <textarea name="desc" id="part-desc" cols="30" rows="10"></textarea>
+        <label for="pics">pictures of the needed part</label>
+        <input type="file" id="pics" />
+      </section>
+      <section class="third-step">
+        <label for="client-name" class="required">your name :</label>
+        <input type="text" required id="client-name" />
+        <label for="email" class="required">email :</label>
+        <input type="email" required id="email" />
+        <label for="phone">Phone number</label>
+        <div class="phone">
+          <div class="code-container">
+            <ul id="code" class="code">
+              <li value="">..</li>
+              <li value="+20">
+                +20 <img src="Images/flags/eg-flag.webp" alt="eg-flag" />
+              </li>
+              <li value="+53">
+                +53 <img src="Images/flags/cu-flag.webp" alt="cu-flag" />
+              </li>
+              <li value="+1">
+                +1 <img src="Images/flags/ca-flag.webp" alt="ca-flag" />
+              </li>
+              <li value="+57">
+                +57 <img src="Images/flags/co-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+86">
+                +86 <img src="Images/flags/cn-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+56">
+                +56 <img src="Images/flags/cl-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+55">
+                +55 <img src="Images/flags/br-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+32">
+                +32 <img src="Images/flags/br-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+43">
+                +43 <img src="Images/flags/at-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+61">
+                +61 <img src="Images/flags/au-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+54">
+                +54 <img src="Images/flags/ar-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+93">
+                +93 <img src="Images/flags/af-flag.webp" alt="EG-flag" />
+              </li>
+            </ul>
+            <span class="flag"></span>
+            <span class="down">&#11206;</span>
+          </div>
+          <input type="tel" name="phone" id="phone" required />
+        </div>
+        <label for="password" class="required">password :</label>
+        <input type="password" id="password" required />
+        <label for="re-type-password" class="required">Re-Enter password :</label>
+        <input type="password" id="re-type-password" required />
+      </section>
+      <section class="fourth-step">
+        <label for="delivery" class="required">deliver to :</label>
+        <select name="delivery" id="delivery" required>
+          <option value="me">me</option>
+          <option value="a-friend">a friend</option>
+        </select>
+        <label for="arabic-name" class="required">Full name in arabic :</label>
+        <input type="text" required id="arabic-name" />
+        <label for="english-name" class="required">Full name in english :</label>
+        <input type="text" required id="english-name" />
+        <label for="phode"> phone number </label>
+        <div class="phone">
+          <div class="code-container">
+            <ul id="code" class="code">
+              <li value="">..</li>
+              <li value="+20">
+                +20 <img src="Images/flags/eg-flag.webp" alt="eg-flag" />
+              </li>
+              <li value="+53">
+                +53 <img src="Images/flags/cu-flag.webp" alt="cu-flag" />
+              </li>
+              <li value="+1">
+                +1 <img src="Images/flags/ca-flag.webp" alt="ca-flag" />
+              </li>
+              <li value="+57">
+                +57 <img src="Images/flags/co-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+86">
+                +86 <img src="Images/flags/cn-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+56">
+                +56 <img src="Images/flags/cl-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+55">
+                +55 <img src="Images/flags/br-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+32">
+                +32 <img src="Images/flags/br-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+43">
+                +43 <img src="Images/flags/at-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+61">
+                +61 <img src="Images/flags/au-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+54">
+                +54 <img src="Images/flags/ar-flag.webp" alt="EG-flag" />
+              </li>
+              <li value="+93">
+                +93 <img src="Images/flags/af-flag.webp" alt="EG-flag" />
+              </li>
+            </ul>
+            <span class="flag"></span>
+            <span class="down">&#11206;</span>
+          </div>
+
+          <input type="tel" name="phone" id="phone2" required />
+        </div>
+        <label for="country" class="required">country :</label>
+        <input type="text" required id="country" />
+        <label for="city" class="required">city :</label>
+        <input type="text" required id="city" />
+        <label for="street" class="required">street :</label>
+        <input type="text" required id="street" />
+        <label for="ZIP" class="required">ZIP code :</label>
+        <input type="text" required id="ZIP" />
+        <label for="address" class="required">address :</label>
+        <textarea name="address" id="address" cols="30" rows="10" required></textarea>
+      </section>
+      <section class="fifth-step">
+        <article>
+          <div class="car=info">
+            <h1>Car Information</h1>
+            <p>Form Type: <span class="type"></span></p>
+            <p>Manufacturer: <span class="manufacturer"></span></p>
+            <p>Car Model: <span class="carModel"></span></p>
+            <p>Model Year: <span class="modelYear"></span></p>
+          </div>
+          <div class="part-info">
+            <h1>Part Information</h1>
+
+            <p>Number of parts: <span class="howMany"></span></p>
+            <p>Serial number: <span class="serial"></span></p>
+            <p>Car Number: <span class="carNumber"></span></p>
+            <p>Part Name: <span class="partName"></span></p>
+          </div>
+        </article>
+        <article>
+          <div class="client-info">
+            <h1>Your Information</h1>
+            <p>Name in arabic: <span class="arabic-name"></span></p>
+            <p>name in english: <span class="english-name"></span></p>
+            <p>Name: <span class="name"></span></p>
+            <p>Email: <span class="email"></span></p>
+            <p>Phone: <span class="phone"></span></p>
+          </div>
+          <div class="delivery-info">
+            <h1>Delivery Information</h1>
+
+            <p>Delivery to: <span class="deliver"></span></p>
+            <p>Country: <span class="country"></span></p>
+            <p>City: <span class="city"></span></p>
+            <p>Street: <span class="street"></span></p>
+            <p>ZIP code: <span class="ZIP"></span></p>
+            <p>Address: <span class="address"></span></p>
+          </div>
+        </article>
+      </section>
+      <section class="sixth-step">
+        <h1>We have successfully recieved your order and is under review</h1>
+        <p>Order number : <span class="order-number"></span></p>
+        <p>Order status : <span>under review</span></p>
+      </section>
+      <div class="control">
+        <button class="back" type="button" onclick="back()">Back</button>
+        <button class="next" type="button" onclick="next()">Next</button>
+      </div>
+      <p class="err"></p>
+      <button class="delete" type="button">Delete Order</button>
+      <div class="indicator">
+        <span class="step-indicator"></span>
+        <span class="step-indicator"></span>
+        <span class="step-indicator"></span>
+        <span class="step-indicator"></span>
+        <span class="step-indicator"></span>
+      </div>
+    </form>
+  </body>
+  <script src="index.js"></script>
+</html>
