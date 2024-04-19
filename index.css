@@ -60,6 +60,7 @@ textarea {
   width: 100%;
   background-color: var(--last);
   border: none;
+  outline: none;
 }
 form > section input[type="file"] {
   padding: 0;
