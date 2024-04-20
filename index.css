@@ -26,7 +26,7 @@ body > form {
 }
 @media (max-width: 600px) {
   body > form {
-    width: 300px;
+    width: 340px;
   }
 }
 form > section {
@@ -65,6 +65,18 @@ textarea {
 form > section input[type="file"] {
   padding: 0;
   background-color: transparent;
+  display: block;
+  margin: auto;
+  width: 100px;
+  color: transparent;
+}
+form > section input[type="file"]::-webkit-file-upload-button {
+  cursor: pointer;
+  padding: 10px;
+}
+form > section input[type="file"]::file-selector-button {
+  cursor: pointer;
+  padding: 10px;
 }
 /*  */
 
@@ -76,13 +88,17 @@ form .control {
   align-items: center;
 }
 
-form .control button {
+.greenbtn {
   background-color: var(--secondry);
   border: none;
   border-radius: 6px;
   padding: 10px 20px;
   color: white;
   cursor: pointer;
+}
+.add {
+  display: block;
+  margin: 15px auto;
 }
 button.next {
   margin-left: auto;
@@ -279,3 +295,88 @@ div.phone {
   background-color: var(--secondry) !important;
 }
 /*  */
+
+/* repeater */
+.order {
+  border-radius: 10px;
+  background-color: var(--text);
+  padding: 5px;
+  gap: 15px;
+  margin: 10px auto;
+}
+.order div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+  gap: 10px;
+}
+.order p {
+  text-transform: capitalize;
+  color: #000120;
+  font-weight: bold;
+  font-size: 15px;
+  width: 120px;
+  margin: 0;
+}
+
+.order span {
+  display: block;
+  color: white;
+  font-weight: normal;
+  text-transform: none;
+}
+.order img {
+  width: 100px;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+}
+.orders .delete-order {
+  margin-left: auto;
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+@media (min-width: 600px) {
+  .order {
+    display: flex;
+    align-items: center;
+  }
+}
+@media (max-width: 600px) {
+  .orders .delete-order {
+    margin: 10px auto;
+    display: block;
+    width: fit-content;
+  }
+}
+/*  */
+
+/* image preview */
+.part-preview img {
+  display: block;
+  max-width: 100%;
+}
+.part-preview {
+  margin: 10px auto;
+  width: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+/*  */
+
+.part-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.part-info div {
+  border: 1px solid;
+  padding: 10px;
+}
+.parts {
+  width: 100%;
+}

@@ -92,18 +92,25 @@
         <img src="" alt="" class="car" />
       </section>
       <section class="second-step">
-        <label for="part-name" class="required">part name :</label>
-        <input required type="text" id="part-name" />
-        <label for="number-of-part" class="required">how many :</label>
-        <input type="number" id="number-of-part" required />
-        <label for="serial" class="required">serial number :</label>
-        <input type="text" id="serial" />
-        <label for="car-number" class="required">car number :</label>
-        <input type="text" id="car-number" />
-        <label for="part-desc">part description :</label>
-        <textarea name="desc" id="part-desc" cols="30" rows="10"></textarea>
-        <label for="pics">pictures of the needed part</label>
-        <input type="file" id="pics" />
+        <article class="orders"></article>
+        <article class="parts-repeater">
+          <section>
+            <label for="part-name" class="required">part name :</label>
+            <input required type="text" id="part-name" />
+            <label for="number-of-part" class="required">how many :</label>
+            <input type="number" id="number-of-part" required />
+            <label for="serial" class="required">serial number :</label>
+            <input type="text" id="serial" />
+            <label for="car-number" class="required">car number :</label>
+            <input type="text" id="car-number" />
+            <label for="part-desc">part description :</label>
+            <textarea name="desc" id="part-desc" cols="30" rows="10"></textarea>
+            <label for="pics">picture of the needed part</label>
+            <div class="part-preview"></div>
+            <input type="file" id="pics" />
+          </section>
+        </article>
+        <button type="button" class="add greenbtn">add part</button>
       </section>
       <section class="third-step">
         <label for="client-name" class="required">your name :</label>
@@ -240,16 +247,6 @@
             <p>Car Model: <span class="carModel"></span></p>
             <p>Model Year: <span class="modelYear"></span></p>
           </div>
-          <div class="part-info">
-            <h1>Part Information</h1>
-
-            <p>Number of parts: <span class="howMany"></span></p>
-            <p>Serial number: <span class="serial"></span></p>
-            <p>Car Number: <span class="carNumber"></span></p>
-            <p>Part Name: <span class="partName"></span></p>
-          </div>
-        </article>
-        <article>
           <div class="client-info">
             <h1>Your Information</h1>
             <p>Name in arabic: <span class="arabic-name"></span></p>
@@ -258,6 +255,8 @@
             <p>Email: <span class="email"></span></p>
             <p>Phone: <span class="phone"></span></p>
           </div>
+        </article>
+        <article>
           <div class="delivery-info">
             <h1>Delivery Information</h1>
 
@@ -269,6 +268,11 @@
             <p>Address: <span class="address"></span></p>
           </div>
         </article>
+        <section class="parts">
+          <h1>Part Information</h1>
+          <div class="part-info"></div>
+          <span class="filler"></span>
+        </section>
       </section>
       <section class="sixth-step">
         <h1>We have successfully recieved your order and is under review</h1>
@@ -276,8 +280,8 @@
         <p>Order status : <span>under review</span></p>
       </section>
       <div class="control">
-        <button class="back" type="button" onclick="back()">Back</button>
-        <button class="next" type="button" onclick="next()">Next</button>
+        <button class="back greenbtn" type="button" onclick="back()">Back</button>
+        <button class="next greenbtn" type="button" onclick="next()">Next</button>
       </div>
       <p class="err"></p>
       <button class="delete" type="button">Delete Order</button>

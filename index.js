@@ -8,10 +8,6 @@ const type = document.querySelector("span.type");
 const manufacturer = document.querySelector(".manufacturer");
 const carModel = document.querySelector(".carModel");
 const modelYear = document.querySelector(".modelYear");
-const noOfParts = document.querySelector("span.howMany");
-const sNumber = document.querySelector("span.serial");
-const cNumber = document.querySelector("span.carNumber");
-const partName = document.querySelector(".partName");
 const name = document.querySelector(".name");
 const email = document.querySelector(".email");
 const phone = document.querySelector("span.phone");
@@ -33,7 +29,16 @@ const stepIndicators = document.querySelectorAll(".step-indicator");
 const codeContainer = document.querySelectorAll(".code-container");
 const codes = document.querySelectorAll(".code li");
 const downArrow = document.querySelector(".down");
+const imgInput = document.querySelector('input[type = "file"]');
+const imgPreview = document.querySelector(".part-preview");
+const partInfo = document.querySelector(".part-info");
+const filler = document.querySelector(".filler");
+const addPart = document.querySelector(".add");
+const orders = document.querySelector(".orders");
+const partsRepeater = document.querySelector(".parts-repeater");
+let img;
 
+let orderArray = [];
 // if all of the first step fields are not empty show the car image
 for (i = 0; i <= 3; i++) {
   form[i].addEventListener("change", () => {
@@ -57,6 +62,8 @@ clear.addEventListener("click", () => {
     step.classList.remove("active");
     step.classList.remove("completed");
   });
+  orderArray = [];
+  orders.innerHTML = "";
   stepIndicators[step].classList.add("active");
   clear.style.display = "none";
   showStep(step);
@@ -66,9 +73,9 @@ clear.addEventListener("click", () => {
 // show the current step
 const showStep = (number) => {
   if (step === 0) {
-    form[24].style.display = "none";
+    form[25].style.display = "none";
   } else {
-    form[24].style.display = "block";
+    form[25].style.display = "block";
   }
   if (step === 5) {
     document.querySelector(".control").style.display = "none";
@@ -86,14 +93,21 @@ const back = () => {
     steps[step].style.display = "none";
     step -= 1;
   }
+  if (step !== 4) {
+    form[26].innerHTML = "next";
+  }
   stepIndicators[step].classList.add("active");
-
+  err.innerHTML = "";
   showStep(step);
 };
 //
 
 // show the next step and hide the previous
 const next = () => {
+  if (step === 1 && orders.innerHTML === "") {
+    err.innerHTML = "please order a part";
+    return false;
+  }
   if (!validateFields(step)) {
     return false;
   }
@@ -114,9 +128,11 @@ const next = () => {
 
   if (step === 4) {
     orderNumber.innerHTML = Math.ceil(Math.random() * 1000000 + 1);
-    form[25].innerHTML = "Submit";
+    form[26].innerHTML = "Submit";
     clear.style.display = "block";
   } else {
+    form[26].innerHTML = "next";
+
     clear.style.display = "none";
   }
 
@@ -126,28 +142,54 @@ const next = () => {
 //
 
 // content in fifth step
-
+for (i = 0; i < form.length; i++) {
+  console.log(form[i], i);
+}
 const displayOrder = () => {
+  console.log(partInfo.children.length);
+  console.log(orderArray.length);
+
   const countryCode = document.getElementById("code");
   type.innerHTML = form[0].value;
   manufacturer.innerHTML = form[1].value;
   carModel.innerHTML = form[2].value;
   modelYear.innerHTML = form[3].value;
-  partName.innerHTML = form[4].value;
-  noOfParts.innerHTML = form[5].value;
-  sNumber.innerHTML = form[6].value;
-  cNumber.innerHTML = form[7].value;
-  name.innerHTML = form[10].value;
-  email.innerHTML = form[11].value;
-  phone.innerHTML = "+" + countryCode.dataset.value + parseInt(form[12].value);
-  deliver.innerHTML = form[15].value;
-  arabicName.innerHTML = form[16].value;
-  englishName.innerHTML = form[17].value;
-  country.innerHTML = form[19].value;
-  city.innerHTML = form[20].value;
-  street.innerHTML = form[21].value;
-  ZIP.innerHTML = form[22].value;
-  address.innerHTML = form[23].value;
+
+  name.innerHTML = form[11].value;
+  email.innerHTML = form[12].value;
+  phone.innerHTML = "+" + countryCode.dataset.value + parseInt(form[13].value);
+  deliver.innerHTML = form[16].value;
+  arabicName.innerHTML = form[17].value;
+  englishName.innerHTML = form[18].value;
+  country.innerHTML = form[20].value;
+  city.innerHTML = form[21].value;
+  street.innerHTML = form[22].value;
+  ZIP.innerHTML = form[23].value;
+  address.innerHTML = form[24].value;
+  if (partInfo.children.length !== orderArray.length) {
+    partInfo.innerHTML = "";
+    orderArray.forEach((order) => {
+      const div = document.createElement("div");
+      partInfo.appendChild(div);
+      div.dataset.id = order.id;
+      const partName = document.createElement("p");
+      const seialNumber = document.createElement("p");
+      const howMany = document.createElement("p");
+      const carNumber = document.createElement("p");
+      div.appendChild(partName);
+      div.appendChild(howMany);
+      div.appendChild(seialNumber);
+      div.appendChild(carNumber);
+      partName.innerHTML = `part name: <span>${order.partName}</span>`;
+      howMany.innerHTML = ` number: <span>${order.howMany}</span>`;
+      seialNumber.innerHTML = `serial number: <span>${order.seialNumber}</span>`;
+      carNumber.innerHTML = `car number: <span>${order.carNumber}</span>`;
+    });
+    if (filler) {
+      filler.remove();
+    }
+    console.log(orderArray);
+  }
 };
 //
 
@@ -186,27 +228,31 @@ const individualOrCompany = () => {
 
 // check if all the required fields are not empty and validating the email
 const validateFields = (step) => {
-  const steps = document.querySelectorAll("form > section");
-  const fields = steps[step].querySelectorAll("*[required]");
-  let isEmpty = Array.from(fields).some((field) => field.value === "");
-  if (isEmpty) {
-    fields.forEach((field) => {
-      if (field.value === "") {
-        field.classList.add("empty");
-        err.innerHTML = "Please fill all required fields";
-      }
-    });
-    return false;
+  if (step === 1) {
+    return true;
+  } else {
+    const steps = document.querySelectorAll("form > section");
+    const fields = steps[step].querySelectorAll("*[required]");
+    let isEmpty = Array.from(fields).some((field) => field.value === "");
+    if (isEmpty) {
+      fields.forEach((field) => {
+        if (field.value === "") {
+          field.classList.add("empty");
+          err.innerHTML = "Please fill all required fields";
+        }
+      });
+      return false;
+    }
+    if (step === 2 && !form[12].value.match(/\w+@\w+.\w+/)) {
+      err.innerHTML = "Please write a valid email";
+      return false;
+    }
+    if (step === 0)
+      fields.forEach((field) => {
+        field.classList.remove("empty");
+        err.innerHTML = "";
+      });
   }
-  if (step === 2 && !form[11].value.match(/\w+@\w+.\w+/)) {
-    err.innerHTML = "Please write a valid email";
-    return false;
-  }
-  if (step === 0)
-    fields.forEach((field) => {
-      field.classList.remove("empty");
-      err.innerHTML = "";
-    });
   return true;
 };
 
@@ -233,4 +279,79 @@ codeContainer.forEach((container) => {
   });
 });
 //
+
+addPart.addEventListener("click", () => {
+  const fields = Array.from(steps[1].querySelectorAll("*[required]")).every(
+    (field) => field.value !== ""
+  );
+
+  if (fields) {
+    const order = document.createElement("div");
+    const div = document.createElement("div");
+    const orederImg = document.createElement("img");
+    orders.appendChild(order);
+    order.className = "order";
+
+    const partName = document.createElement("p");
+    const seialNumber = document.createElement("p");
+    const howMany = document.createElement("p");
+    const carNumber = document.createElement("p");
+    const deleteorder = document.createElement("span");
+    deleteorder.className = "delete-order";
+    deleteorder.innerHTML = "delete";
+    order.appendChild(div);
+    div.appendChild(partName);
+    div.appendChild(howMany);
+    div.appendChild(seialNumber);
+    div.appendChild(carNumber);
+    order.appendChild(orederImg);
+    const id = Math.ceil(Math.random() * 10000);
+
+    const orderobj = {
+      id: id,
+      partName: form[4].value,
+      howMany: form[5].value,
+      seialNumber: form[6].value,
+      carNumber: form[7].value,
+    };
+    if (img) {
+      orederImg.src = img;
+      orderobj.preview = img;
+    }
+    order.appendChild(deleteorder);
+    order.dataset.id = id;
+    partName.innerHTML = `part name: <span>${form[4].value}</span>`;
+    howMany.innerHTML = ` number: <span>${form[5].value}</span>`;
+    seialNumber.innerHTML = `serial number: <span>${form[6].value}</span>`;
+    carNumber.innerHTML = `car number: <span>${form[7].value}</span>`;
+    orderArray.push(orderobj);
+    deleteorder.addEventListener("click", () => {
+      const selected = orderArray.findIndex((order) => order.id === id);
+      orderArray.splice(selected, 1);
+      order.remove();
+    });
+    form[4].value = "";
+    form[5].value = "";
+    form[6].value = "";
+    form[7].value = "";
+    form[8].value = "";
+    form[9].value = "";
+    imgPreview.innerHTML = "";
+    err.innerHTML = "";
+  } else {
+    err.innerHTML = "please fill the required fields";
+  }
+});
+imgInput.addEventListener("change", (e) => {
+  const files = e.currentTarget.files[0];
+  if (files) {
+    const fileReader = new FileReader();
+    // console.log(fileReader.readAsDataURL(files));
+    fileReader.readAsDataURL(files);
+    fileReader.addEventListener("load", function () {
+      img = this.result;
+      imgPreview.innerHTML = '<img src="' + this.result + '" />';
+    });
+  }
+});
 showStep(step);
