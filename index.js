@@ -142,13 +142,7 @@ const next = () => {
 //
 
 // content in fifth step
-for (i = 0; i < form.length; i++) {
-  console.log(form[i], i);
-}
 const displayOrder = () => {
-  console.log(partInfo.children.length);
-  console.log(orderArray.length);
-
   const countryCode = document.getElementById("code");
   type.innerHTML = form[0].value;
   manufacturer.innerHTML = form[1].value;
