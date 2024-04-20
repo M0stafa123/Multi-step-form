@@ -121,16 +121,15 @@ button.next {
   user-select: none;
 }
 .down {
-  font-size: 15px;
-  color: gray;
-  display: block;
+  border-top: 10px;
+  border-left: 5px;
+  border-right: 5px;
+  border-bottom: 0px;
+  border-style: solid;
+  border-color: gray transparent transparent transparent;
   transform-origin: center;
-  height: fit-content;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: -2px;
   position: absolute;
-  left: 41px;
+  left: 43px;
   top: 50%;
   transform: translatey(-50%);
   transition: transform 0.3ms;
