@@ -164,20 +164,30 @@ const displayOrder = () => {
     partInfo.innerHTML = "";
     orderArray.forEach((order) => {
       const div = document.createElement("div");
+      const section = document.createElement("section");
       partInfo.appendChild(div);
       div.dataset.id = order.id;
       const partName = document.createElement("p");
       const seialNumber = document.createElement("p");
       const howMany = document.createElement("p");
       const carNumber = document.createElement("p");
-      div.appendChild(partName);
-      div.appendChild(howMany);
-      div.appendChild(seialNumber);
-      div.appendChild(carNumber);
+      const partImg = document.createElement("img");
+      div.appendChild(section);
+      section.appendChild(partName);
+      section.appendChild(howMany);
+      section.appendChild(seialNumber);
+      section.appendChild(carNumber);
+      div.appendChild(partImg);
       partName.innerHTML = `part name: <span>${order.partName}</span>`;
       howMany.innerHTML = ` number: <span>${order.howMany}</span>`;
       seialNumber.innerHTML = `serial number: <span>${order.seialNumber}</span>`;
-      carNumber.innerHTML = `car number: <span>${order.carNumber}</span>`;
+      console.log(partImg);
+      if (order.carNumber) {
+        carNumber.innerHTML = `car number: <span>${order.carNumber}</span>`;
+      }
+      if (order.preview) {
+        partImg.src = order.preview;
+      }
     });
     if (filler) {
       filler.remove();
@@ -317,7 +327,9 @@ addPart.addEventListener("click", () => {
     partName.innerHTML = `part name: <span>${form[4].value}</span>`;
     howMany.innerHTML = ` number: <span>${form[5].value}</span>`;
     seialNumber.innerHTML = `serial number: <span>${form[6].value}</span>`;
-    carNumber.innerHTML = `car number: <span>${form[7].value}</span>`;
+    if (form[7].value) {
+      carNumber.innerHTML = `car number: <span>${form[7].value}</span>`;
+    }
     orderArray.push(orderobj);
     deleteorder.addEventListener("click", () => {
       const selected = orderArray.findIndex((order) => order.id === id);

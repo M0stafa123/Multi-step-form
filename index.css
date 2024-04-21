@@ -326,10 +326,11 @@ div.phone {
   text-transform: none;
 }
 .order img {
-  width: 100px;
+  width: 150px;
   border-radius: 10px;
   display: block;
   margin: auto;
+  aspect-ratio: 1/1;
 }
 .orders .delete-order {
   margin-left: auto;
@@ -367,15 +368,18 @@ div.phone {
 }
 /*  */
 
-.part-info {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
 .part-info div {
   border: 1px solid;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.part-info div img {
+  width: 150px;
+  aspect-ratio: 1/1;
+  margin-left: auto;
+  border-radius: 10px;
 }
 .parts {
   width: 100%;
