@@ -292,7 +292,6 @@ addPart.addEventListener("click", () => {
   if (fields) {
     const order = document.createElement("div");
     const div = document.createElement("div");
-    const orederImg = document.createElement("img");
     orders.appendChild(order);
     order.className = "order";
 
@@ -308,7 +307,6 @@ addPart.addEventListener("click", () => {
     div.appendChild(howMany);
     div.appendChild(seialNumber);
     div.appendChild(carNumber);
-    order.appendChild(orederImg);
     const id = Math.ceil(Math.random() * 10000);
 
     const orderobj = {
@@ -319,8 +317,11 @@ addPart.addEventListener("click", () => {
       carNumber: form[7].value,
     };
     if (img) {
+      const orederImg = document.createElement("img");
+      order.appendChild(orederImg);
       orederImg.src = img;
       orderobj.preview = img;
+      img = null;
     }
     order.appendChild(deleteorder);
     order.dataset.id = id;

@@ -32,7 +32,7 @@ body > form {
 form > section {
   display: none;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   color: white;
 }
 form > section > div {
@@ -308,7 +308,7 @@ div.phone {
   display: flex;
   flex-wrap: wrap;
   width: 250px;
-  gap: 10px;
+  gap: 5px;
 }
 .order p {
   text-transform: capitalize;
@@ -327,10 +327,10 @@ div.phone {
 }
 .order img {
   width: 150px;
+  height: 150px;
   border-radius: 10px;
   display: block;
   margin: auto;
-  aspect-ratio: 1/1;
 }
 .orders .delete-order {
   margin-left: auto;
