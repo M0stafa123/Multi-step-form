@@ -50,7 +50,6 @@ for (i = 0; i <= 3; i++) {
 // begin at step 1
 var step = 0;
 //
-stepIndicators[step].classList.add("active");
 // reset the form if the user click on the delete button
 clear.addEventListener("click", () => {
   form.reset();
@@ -82,6 +81,7 @@ const showStep = (number) => {
     document.querySelector(".indicator").style.display = "none";
   }
   steps[number].style.display = "block";
+  stepIndicators[step].classList.add("active");
 };
 //
 
@@ -96,7 +96,6 @@ const back = () => {
   if (step !== 4) {
     form[26].innerHTML = "next";
   }
-  stepIndicators[step].classList.add("active");
   err.innerHTML = "";
   showStep(step);
 };
@@ -104,10 +103,6 @@ const back = () => {
 
 // show the next step and hide the previous
 const next = () => {
-  if (step === 1 && orders.innerHTML === "") {
-    err.innerHTML = "please order a part";
-    return false;
-  }
   if (!validateFields(step)) {
     return false;
   }
@@ -121,9 +116,6 @@ const next = () => {
   if (step < steps.length - 1) {
     steps[step].style.display = "none";
     step += 1;
-  }
-  if (step <= 4) {
-    stepIndicators[step].classList.add("active");
   }
 
   if (step === 4) {
@@ -168,31 +160,27 @@ const displayOrder = () => {
       partInfo.appendChild(div);
       div.dataset.id = order.id;
       const partName = document.createElement("p");
-      const seialNumber = document.createElement("p");
+      const serialNumber = document.createElement("p");
       const howMany = document.createElement("p");
       const carNumber = document.createElement("p");
-      const partImg = document.createElement("img");
       div.appendChild(section);
-      section.appendChild(partName);
-      section.appendChild(howMany);
-      section.appendChild(seialNumber);
-      section.appendChild(carNumber);
-      div.appendChild(partImg);
+      section.append(partName, howMany, serialNumber, carNumber);
+      console.log(order);
       partName.innerHTML = `part name: <span>${order.partName}</span>`;
       howMany.innerHTML = ` number: <span>${order.howMany}</span>`;
-      seialNumber.innerHTML = `serial number: <span>${order.seialNumber}</span>`;
-      console.log(partImg);
+      serialNumber.innerHTML = `serial number: <span>${order.serialNumber}</span>`;
       if (order.carNumber) {
         carNumber.innerHTML = `car number: <span>${order.carNumber}</span>`;
       }
       if (order.preview) {
+        const partImg = document.createElement("img");
+        div.appendChild(partImg);
         partImg.src = order.preview;
       }
     });
     if (filler) {
       filler.remove();
     }
-    console.log(orderArray);
   }
 };
 //
@@ -232,10 +220,13 @@ const individualOrCompany = () => {
 
 // check if all the required fields are not empty and validating the email
 const validateFields = (step) => {
+  if (step === 1 && orders.innerHTML === "") {
+    err.innerHTML = "please order a part";
+    return false;
+  }
   if (step === 1) {
     return true;
   } else {
-    const steps = document.querySelectorAll("form > section");
     const fields = steps[step].querySelectorAll("*[required]");
     let isEmpty = Array.from(fields).some((field) => field.value === "");
     if (isEmpty) {
@@ -247,15 +238,14 @@ const validateFields = (step) => {
       });
       return false;
     }
-    if (step === 2 && !form[12].value.match(/\w+@\w+.\w+/)) {
+    if (step === 2 && !form[12].value.match(/\w+@\w+\.\w+/)) {
       err.innerHTML = "Please write a valid email";
       return false;
     }
-    if (step === 0)
-      fields.forEach((field) => {
-        field.classList.remove("empty");
-        err.innerHTML = "";
-      });
+    fields.forEach((field) => {
+      field.classList.remove("empty");
+      err.innerHTML = "";
+    });
   }
   return true;
 };
@@ -283,7 +273,6 @@ codeContainer.forEach((container) => {
   });
 });
 //
-
 addPart.addEventListener("click", () => {
   const fields = Array.from(steps[1].querySelectorAll("*[required]")).every(
     (field) => field.value !== ""
@@ -296,24 +285,21 @@ addPart.addEventListener("click", () => {
     order.className = "order";
 
     const partName = document.createElement("p");
-    const seialNumber = document.createElement("p");
+    const serialNumber = document.createElement("p");
     const howMany = document.createElement("p");
     const carNumber = document.createElement("p");
     const deleteorder = document.createElement("span");
     deleteorder.className = "delete-order";
     deleteorder.innerHTML = "delete";
     order.appendChild(div);
-    div.appendChild(partName);
-    div.appendChild(howMany);
-    div.appendChild(seialNumber);
-    div.appendChild(carNumber);
+    div.append(partName, howMany, serialNumber, carNumber);
     const id = Math.ceil(Math.random() * 10000);
 
     const orderobj = {
       id: id,
       partName: form[4].value,
       howMany: form[5].value,
-      seialNumber: form[6].value,
+      serialNumber: form[6].value,
       carNumber: form[7].value,
     };
     if (img) {
@@ -327,7 +313,7 @@ addPart.addEventListener("click", () => {
     order.dataset.id = id;
     partName.innerHTML = `part name: <span>${form[4].value}</span>`;
     howMany.innerHTML = ` number: <span>${form[5].value}</span>`;
-    seialNumber.innerHTML = `serial number: <span>${form[6].value}</span>`;
+    serialNumber.innerHTML = `serial number: <span>${form[6].value}</span>`;
     if (form[7].value) {
       carNumber.innerHTML = `car number: <span>${form[7].value}</span>`;
     }
@@ -337,12 +323,9 @@ addPart.addEventListener("click", () => {
       orderArray.splice(selected, 1);
       order.remove();
     });
-    form[4].value = "";
-    form[5].value = "";
-    form[6].value = "";
-    form[7].value = "";
-    form[8].value = "";
-    form[9].value = "";
+    steps[1].querySelectorAll("input,textarea").forEach((input) => {
+      input.value = "";
+    });
     imgPreview.innerHTML = "";
     err.innerHTML = "";
   } else {

@@ -35,10 +35,9 @@ form > section {
   padding: 10px;
   color: white;
 }
-form > section > div {
+form > section.first-step > div {
   padding: 10px;
 }
-
 /* labels */
 form > section label {
   display: block;
@@ -148,7 +147,7 @@ button.next {
   left: 43px;
   top: 50%;
   transform: translatey(-50%);
-  transition: transform 0.3ms;
+  transition: 150ms;
 }
 .flag {
   width: 40px;
